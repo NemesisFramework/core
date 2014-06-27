@@ -12,11 +12,6 @@ Requires
 
 Apache .htaccess
 ------------
-* htaccess and url_rewriting PHP modules
-
-
-Htaccess
-------------
 
 	<IfModule mod_rewrite.c>
 		#Symlinks maybe needed for URL rewriting
@@ -59,6 +54,9 @@ Configuration
 
 Changelog
 ---------
+
+### 0.2
+* Test on Lighttpd
 
 ### 0.1
 * Initial Release
