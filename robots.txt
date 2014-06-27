@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /apps
+Disallow: /cache
+Disallow: /core
+Disallow: /logs
+Disallow: /plugins
+
+Allow: /
+

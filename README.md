@@ -14,32 +14,33 @@ Apache .htaccess
 ------------
 * htaccess and url_rewriting PHP modules
 
+
 Htaccess
 ------------
-<IfModule mod_rewrite.c>
-	#Symlinks maybe needed for URL rewriting
-	Options +FollowSymLinks
-	
-	RewriteEngine On
-	
-	# if you want to exclude some directories from url rewriting
-	#RewriteCond %{REQUEST_URI} !^/(site2|site3/.*)$
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*)$ index.php?/$1 [QSA,L]
 
-</IfModule>
+	<IfModule mod_rewrite.c>
+		#Symlinks maybe needed for URL rewriting
+		Options +FollowSymLinks
+		RewriteEngine On
+		#if you want to exclude some directories from url rewriting
+		#RewriteCond %{REQUEST_URI} !^/(site2|site3/.*)$
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule ^(.*)$ index.php?/$1 [QSA,L]
+	</IfModule>
+
 
 Lighttpd.conf
 ------------
-$HTTP["host"]  =~ "www\.mydomain\.com"{
-  server.document-root = "/pathToNemesisRoot/"
-  accesslog.filename   = "/PathToLogs/nemesisaccess.log"
- 	url.rewrite = (
-		"^/(.*)\.(.+)$" => "$0",
-		"^/(.+)/?$" => "/index.php/$1"
-	)
-}
+
+	$HTTP["host"]  =~ "www\.mydomain\.com"{
+		server.document-root = "/pathToNemesisRoot/"
+		accesslog.filename   = "/PathToLogs/nemesisaccess.log"
+	 	url.rewrite = (
+			"^/(.*)\.(.+)$" => "$0",
+			"^/(.+)/?$" => "/index.php/$1"
+		)
+	}
 
 Tree
 ------------
@@ -59,5 +60,5 @@ Configuration
 Changelog
 ---------
 
-### 1.0 BETA
+### 0.1
 * Initial Release
