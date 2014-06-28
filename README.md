@@ -1,4 +1,4 @@
-NEMESIS FRAMEWORK 
+nemesis -- Light & Simple PHP5 Framework
 =============================
 
 Author
