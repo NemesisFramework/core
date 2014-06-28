@@ -32,7 +32,8 @@ Lighttpd.conf
 		server.document-root = "/pathToNemesisRoot/"
 		accesslog.filename   = "/PathToLogs/nemesisaccess.log"
 	 	url.rewrite = (
-			"^/(.*)\.(.+)$" => "$0",
+			"^/apps/(.*)\.(.+)$" => "$0",
+			"^/public/(.*)\.(.+)$" => "$0",
 			"^/(.+)/?$" => "/index.php/$1"
 		)
 	}
@@ -56,7 +57,7 @@ Changelog
 ---------
 
 ### 0.2
-* Test on Lighttpd
+* Test on Lighttpd / Fixed url rewriting
 
 ### 0.1
 * Initial Release
