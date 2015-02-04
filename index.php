@@ -1,15 +1,30 @@
 <?php
 
-/* NEMESIS INIT */
+/* NEMESIS BOOTSTRAP */
 
-include_once 'core/init.php';
+include_once 'core/bootstrap.php';
 
-/* GET NEMESIS INSTANCE */
+/* GET APP INSTANCE */
+/*
+core_functions();
+core_autoloader();
 
-$app = $NEMESIS->app('blog');
+$blogApp = App::getInstance('blog');
+$blogApp->setAsDefault();
+$blogApp->run();
+echo $blogApp;
+*/
 
-$app->setAsDefault();
-$app->run();
-echo $app;
+/* GET PLUGIN INSTANCE */
+/*
+core_functions();
+core_autoloader();
+
+$loader = Loader::getInstance();
+$loader->initClass('Plugin');
+
+$mailerPlugin = Plugin::getInstance('Mailer', array('smtp' => 'smtp.gmail.com'));
+
+*/
 
 ?>

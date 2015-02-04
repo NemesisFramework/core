@@ -1,20 +1,9 @@
 <?php
-
 /*
-
-Developer Name: Nicolas Castelli
-Developer Website: http://ncastelli.carbonmade.com 
-File name: Functions.php
-Creation date: 12/2/2013
-Liences: GPL2
-
-Description:
-
-Main core functions
-
+	Core Functions
+	Developer Name : Kimi
+	Description : Main tools
 */
-
-
 
 //	MANAGE STRINGS
 
@@ -25,7 +14,7 @@ if (!function_exists('strip_accents')) {
 		return strtr($str,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
 	
 	}
-
+	
 }
 
 
@@ -37,6 +26,7 @@ if (!function_exists('strip_specialchars')) {
 		return preg_replace('/&.+;/', $replacement, $str);
 		
 	}
+	
 }
 
 
