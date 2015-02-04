@@ -3,7 +3,7 @@ nemesis -- Simple PHP5 Framework
 
 Author
 ------------
-* Nicolas Castelli (castelli.nc@gmail.com)
+* Kimi (kimhimitu@gmail.com)
 
 Requires
 ------------
@@ -40,21 +40,33 @@ Lighttpd.conf
 
 Tree
 ------------
-* /apps : contains all applications built with NEMESIS FRAMEWORK
-* /cache : common cache directory, it contains all thumbnails and css/js compressed files
 * /core : contains all NEMESIS core components
-* /logs : contains file PHP errors logs (check it as often as you get a bug !)
-* /plugins : contains all plugins for NEMESIS FRAMEWORK
+
+With App Class
+* /apps : contains all applications built with NEMESIS FRAMEWORK
 * /public : contains all public files sent via FTP (example: "/public/myfile.pdf" is accessible in public) 
+
+With Plugin Class
+* /plugins : contains all plugins for NEMESIS FRAMEWORK
+
+With CSSMin Plugin
+* /cache : common cache directory, it contains all thumbnails and css/js compressed files
 
 Configuration
 ------------
-* CHMOD 777 on /cache 
-* Define Applications Instances in /index.php with "$NEMESIS" loader var
-
+* CHMOD 777 on /core/errors.log
 
 Changelog
 ---------
+
+### 0.3
+* Simplification, re-organization of classes dependencies
+* init.php replaced with bootstrap.php, it is now clean and
+* new way to instance plugins and apps independently from Loader Class
+* Routes configuration has now its own class with URL Class dependence
+* Loader class can initialize a class with a initClass method
+* errors.log changes its path to /core/errors.log
+* core_functions() and core_loader() appears in bootstrap to include the required libraries
 
 ### 0.2
 * Test on Lighttpd / Fixed url rewriting
