@@ -38,15 +38,15 @@ class Loader
 	{
 		if (!is_array($extendedClass))
 		{
-			$class = new $extendedClass();
-			unset $class;
+			$instanceClass = new $extendedClass();
+			unset ($instanceClass);
 		}
 		else 
 		{
 			foreach ($extendedClass as $class) 
 			{
 				$classI = new $class();
-				unset $classI;
+				unset ($classI);
 			}
 		}
 	}

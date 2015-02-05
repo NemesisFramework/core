@@ -17,7 +17,7 @@ class Plugin
 		
 		if ($name == 'init')
 		{
-			$path = NEMEMSIS_PATH.'plugins';
+			$path = NEMESIS_PATH.'plugins';
 			if (!file_exists($path))
 				error_log('Core.Plugin : plugins directory does not exist');
 		}
@@ -30,25 +30,36 @@ class Plugin
 	
 	public static function getInstance($name, $attributes=array())
 	{
-		if (!isset(self::$instances[$name]))
-			
-			if (file_exists($config=NEMESIS_PATH.'plugins/'.$name.'/config.php'))
-				require_once($config);
-			
-			if (file_exists($functions=NEMESIS_PATH.'plugins/'.$name.'/functions.php'))
-				require_once($functions);
-		
-			if (!file_exists($file=NEMESIS_PATH.'plugins/'.$name.'/plugin.php'))
+		if (file_exists($file=NEMESIS_PATH.'plugins/'.$name'.php'))
+		{
+			require_once($file);
+		}
+		else 
+		{
+
+			if (!isset(self::$instances[$name]))
 			{
-				echo $file.' is missing. Cannot run plugin called '.$name.'';
-				die;
+			
+				if (file_exists($config=NEMESIS_PATH.'plugins/'.$name.'/config.php'))
+					require_once($config);
+			
+				if (file_exists($functions=NEMESIS_PATH.'plugins/'.$name.'/functions.php'))
+					require_once($functions);
+		
+				if (!file_exists($file=NEMESIS_PATH.'plugins/'.$name.'/plugin.php'))
+				{	
+					echo $file.' is missing. Cannot run plugin called '.$name.'';
+					die;
+				}
+			
+				require_once($file);
+
+				$className = $name.'Plugin';
+				self::$instances[$name] = new $className($name, $attributes);
 			}
 			
-			require_once($file);
-
-			$className = $name.'Plugin';
-			self::$instances[$name] = new $className($name, $attributes);
-		return self::$instances[$name];
+			return self::$instances[$name];
+		}
 	}
 
 }
