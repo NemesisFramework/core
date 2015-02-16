@@ -2,7 +2,7 @@
 /*
 	Router
 	Manage Routes
-	Dependencies : Loader, URL, Hook
+	Dependencies : Loader, URL
 */
 
 class Router
@@ -24,21 +24,5 @@ class Router
 
 		URL::splitRequest($request);
 		URL::$request['QUERY_STRING'] = $_SERVER['QUERY_STRING'];
-	}
-	
-	public function getNav($items)
-    {
-
-		foreach ($items as $item)
-		{
-			$item = Hook::get('Router', 'getNav')->call($item);
-
-			if (is_array($item))
-				$new_menu_items[] = array('name' => $item[0], 'url' => $item[1], 'target' => '_blank');
-			else
-				$new_menu_items[] = array('name' => $item, 'url' => new URL($item));
-		}
-
-		return $new_menu_items;
 	}
 }

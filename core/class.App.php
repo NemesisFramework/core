@@ -2,7 +2,7 @@
 /*
 	Class App
 	Description : Manage MVC Applications
-	Dependencies : Loader, MVC, Hook
+	Dependencies : Loader, MVC, Hook, URL
 */
 
 class App extends MVC
@@ -141,6 +141,22 @@ class App extends MVC
 		}
 		else
 			$this->addTobuffer('ERROR 404 : PAGE NOT FOUND');
+	}
+	
+	public static function getNav($items)
+    {
+
+		foreach ($items as $item)
+		{
+			$item = Hook::get('App', 'getNav')->call($item);
+
+			if (is_array($item))
+				$new_menu_items[] = array('name' => $item[0], 'url' => $item[1], 'target' => '_blank');
+			else
+				$new_menu_items[] = array('name' => $item, 'url' => new URL($item));
+		}
+
+		return $new_menu_items;
 	}
 	
 	public static function getInstance($name, $version='1', $url='')
