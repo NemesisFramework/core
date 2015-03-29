@@ -133,8 +133,8 @@ Changelog
 ---------
 ### 0.5 
 * New function in functions.php : key_generator($length=8)
-* Removed hash/token generator and the way of secure sessions in class.Session.php ($_SESSION[$sessionName] = $expirationDate)
-* Add Cross-Origin Resource Sharing (CORS) headers in class.Api.php with Api::CORS() static method
+* Removed hash/token generator and new secure ($_SESSION[$sessionName] = $expirationDate)
+* Add Cross-Origin Resource Sharing (CORS) headers in class.Api.php with Api::CORS()
 
 ### 0.4
 * New class : class.Api.php to manage a JSON Web Api
