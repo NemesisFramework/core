@@ -316,3 +316,20 @@ if (!function_exists('sanitize_output')) {
 	}
 
 }
+
+
+if (!function_exists('key_generator')) {
+
+	function key_generator($length=8) {
+		$alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+		$key = array();
+		$alphaLength = strlen($alphabet) - 1;
+		for ($i = 0; $i < $length; $i++)
+		{
+			$n = rand(0, $alphaLength);
+			$key[] = $alphabet[$n];
+		}
+		return implode($key);
+	}
+	
+}
