@@ -1,5 +1,5 @@
 # Nemesis Framework  #
-Nemesis is a small PHP Framework that I've started to sustain when I realized I needed a 
+Nemesis is a small PHP Framework that I've started to sustain when I realized I needed a
 **lightweight**, **native**, **minimalistic** and **flexible** tool to quickly develop web app for testing and specific requests which require to work on a basic shared web hosting with few hardware resources.
 
 ## Features ##
@@ -19,16 +19,16 @@ The core is customizable according to the components needed and their dependenci
 
 **Session** : manage a secure session, depends to Loader
 
-**Plugin** : manage plugins in plugins/* with a class controller, depends to Loader 
+**Plugin** : manage plugins in plugins/* with a class controller, depends to Loader
 
 **URL** : get headers received, hash and output URLs, depends to Loader
 
-**Router** : create routes, depends to Loader, URL 
+**Router** : create routes, depends to Loader, URL
 
 **Api** : manage a simple JSON Web Api with a class controller, depends to Loader, URL, Router
 
 **MVC** : add all components to build a MVC app like a view builder, depends to Loader, Hook, URL, Routes
- 
+
 **App** : manage a web app built on a MVC pattern with a class controller, depends to Loader, Hook, URL, Routes, MVC
 
 
@@ -82,7 +82,7 @@ And for Lighttpd Servers the content of Lighttpd.conf :
 
 ### Optional directories ###
 * /apps : contains all applications built with Nemesis Framework
-* /public : contains all public files sent via FTP (example: "/public/myfile.pdf" is accessible in public) 
+* /public : contains all public files sent via FTP (example: "/public/myfile.pdf" is accessible in public)
 * /plugins : contains all plugins for Nemesis Framework
 
 
@@ -103,30 +103,39 @@ If the autoloader is required
 	core_autoloader();
 
 Router initialization
-	
+
 	$loader = Loader::getInstance();
 	$loader->initClass('Router');
 
-Example of a web app initialization 
+Example of a web app initialization
 
 	$blogApp = App::getInstance('blog'); // apps/blog/app.php
 	$blogApp->setAsDefault(); // if this is the default app, the URL will be / otherwise /blog
 	$blogApp->run();
 	echo $blogApp;
 
-Example of a plugin initialization 
+Example of a plugin initialization
 
 	$loader = Loader::getInstance();
 	$loader->initClass('Plugin');
 	$htmlPlugin = Plugin::getInstance('HTMLhelpers');
-	echo $htmlPlugin->text(array('placeholder' => 'My input')); // will display <input type="text" placeholder="My input" /> 
+	echo $htmlPlugin->text(array('placeholder' => 'My input')); // will display <input type="text" placeholder="My input" />
 
+### More examples ###
+For more examples, check the others repositories prefixed with "nemesis-" 
 
-For more examples, check the others repositories prefixed with "nemesis-" like nemesis-api-newsletter or nemesis-app-blog
+- nemesis-api-newsletter : [https://github.com/kimihub/nemesis-api-newsletter](https://github.com/kimihub/nemesis-api-newsletter)
+
+- nemesis-app-blog : [https://github.com/kimihub/nemesis-app-blog](https://github.com/kimihub/nemesis-app-blog)
 
 
 Changelog
 ---------
+### 0.5 
+* New function in functions.php : key_generator($length=8)
+* Removed hash/token generator and the way of secure sessions in class.Session.php ($_SESSION[$sessionName] = $expirationDate)
+* Add Cross-Origin Resource Sharing (CORS) headers in class.Api.php with Api::CORS() static method
+
 ### 0.4
 * New class : class.Api.php to manage a JSON Web Api
 * New class : class.Session.php to manage a secure session
@@ -134,7 +143,7 @@ Changelog
 ### 0.3
 * Simplification, re-organization of classes dependencies
 * init.php replaced with bootstrap.php, it is now clean and
-* new way to instance plugins and apps independently from Loader Class
+* new way to instance plugins and apps independently from Loader Class 
 * Routes configuration has now its own class with URL Class dependence
 * Loader class can initialize a class with a initClass method
 * errors.log changes its path to /core/errors.log
@@ -145,3 +154,4 @@ Changelog
 
 ### 0.1
 * Initial Release
+ 
