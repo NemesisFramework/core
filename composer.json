@@ -1,0 +1,17 @@
+{
+    "name": "kimihub/nemesis-framework",
+    "description": "Small PHP5 Framework",
+    "version": "0.5.0",
+    "authors": [
+        {
+            "name": "Kimi",
+            "email": "kim.himitsu@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {},
+    "autoload": {},
+    "minimum-stability": "stable"
+}
