@@ -12,6 +12,5 @@
         "php": ">=5.3.0"
     },
     "require-dev": {},
-    "autoload": {},
-    "minimum-stability": "stable"
+    "autoload": {}
 }
