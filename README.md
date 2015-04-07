@@ -19,7 +19,7 @@ The core is customizable according to the components needed and their dependenci
 
 **Session** : manage a secure session, depends to Loader
 
-**Plugin** : manage plugins in plugins/* with a class controller, depends to Loader
+**Plugin** : DEPRECATED
 
 **URL** : get headers received, hash and output URLs, depends to Loader
 
@@ -41,6 +41,8 @@ The core is customizable according to the components needed and their dependenci
 
 **CURL** : url_get_contents
 
+**key** : Key_Generator
+
 
 ## Required PHP version and modules ##
 
@@ -50,6 +52,11 @@ The core is customizable according to the components needed and their dependenci
 
 
 ## Installation ##
+
+### Composer ###
+Nemesis-Framework is now on packagist, so it can be required as a dependency with Composer : 
+
+[https://packagist.org/packages/kimihub/nemesis-framework](https://packagist.org/packages/kimihub/nemesis-framework)
 
 
 ### URL Rewriting Configuration ###
@@ -70,29 +77,22 @@ For Apache Servers the content of the .htaccess file located to the framework ro
 And for Lighttpd Servers the content of Lighttpd.conf :
 
 	$HTTP["host"]  =~ "www\.mydomain\.com"{
-		server.document-root = "/pathToNemesisRoot/"
-		accesslog.filename   = "/PathToLogs/nemesisaccess.log"
+		server.document-root = "/PathToServerRoot/"
+		accesslog.filename   = "/PathToLogs/access.log"
 	 	url.rewrite = (
-			"^/apps/(.*)\.(.+)$" => "$0",
-			"^/public/(.*)\.(.+)$" => "$0",
 			"^/(.+)/?$" => "/index.php/$1"
 		)
 	}
 
-
-### Optional directories ###
-* /apps : contains all applications built with Nemesis Framework
-* /public : contains all public files sent via FTP (example: "/public/myfile.pdf" is accessible in public)
-* /plugins : contains all plugins for Nemesis Framework
-
-
-### Specific configuration on a shared web hosting ###
-If the framework works on a traditionnal hosting, make sure CHMOD is set to 0777 on /core/errors.log
-
 ### *index.php* instructions ###
 Require bootstraper
 
-	require_once 'core/bootstrap.php';
+	require_once 'nemesis.php';
+    
+To log php errors
+
+    require_once 'nemesis.dev.php';
+        
 
 If the core functions are required
 
@@ -109,17 +109,9 @@ Router initialization
 
 Example of a web app initialization
 
-	$blogApp = App::getInstance('blog'); // apps/blog/app.php
-	$blogApp->setAsDefault(); // if this is the default app, the URL will be / otherwise /blog
+	$blogApp = App::getInstance('blog');
 	$blogApp->run();
 	echo $blogApp;
-
-Example of a plugin initialization
-
-	$loader = Loader::getInstance();
-	$loader->initClass('Plugin');
-	$htmlPlugin = Plugin::getInstance('HTMLhelpers');
-	echo $htmlPlugin->text(array('placeholder' => 'My input')); // will display <input type="text" placeholder="My input" />
 
 ### More examples ###
 For more examples, check the others repositories prefixed with "nemesis-" 
@@ -131,6 +123,16 @@ For more examples, check the others repositories prefixed with "nemesis-"
 
 Changelog
 ---------
+### 0.6
+* Move the bootstrapper core/bootstrap.php to ./nemesis.php for more simplicity with Composer
+* Move core/errors.log to ./errors.log 
+* Add ./nemesis.dev.php to write logs in the errors file when included
+* Add NEMESIS_PROCESS_PATH to ./nemesis.php and core/class.App.php
+* Change behaviour of App system, an app can now be in the root server directory
+* Deprecated App::setAsDefault() and App::$url
+* Deprecated class.Plugin.php
+* Define composer.json
+
 ### 0.5 
 * New function in functions.php : key_generator($length=8)
 * Removed hash/token generator and new secure ($_SESSION[$sessionName] = $expirationDate)
