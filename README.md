@@ -54,13 +54,13 @@ The core is customizable according to the components needed and their dependenci
 ## Installation ##
 
 ### Composer ###
-Nemesis-Framework is now on packagist, so it can be required as a dependency with Composer : 
+Nemesis-Framework is now on packagist, so it can be required as a dependency with Composer :
 
 [https://packagist.org/packages/kimihub/nemesis-framework](https://packagist.org/packages/kimihub/nemesis-framework)
 
 
 ### URL Rewriting Configuration ###
-For Apache Servers the content of the .htaccess file located to the framework root directory is :
+For Apache Servers the content of the .htaccess file located to the server root directory is :
 
 	<IfModule mod_rewrite.c>
 		#Symlinks maybe needed for URL rewriting
@@ -88,11 +88,11 @@ And for Lighttpd Servers the content of Lighttpd.conf :
 Require bootstraper
 
 	require_once 'nemesis.php';
-    
+
 To log php errors
 
     require_once 'nemesis.dev.php';
-        
+
 
 If the core functions are required
 
@@ -114,7 +114,7 @@ Example of a web app initialization
 	echo $blogApp;
 
 ### More examples ###
-For more examples, check the others repositories prefixed with "nemesis-" 
+For more examples, check the others repositories prefixed with "nemesis-"
 
 - nemesis-api-newsletter : [https://github.com/kimihub/nemesis-api-newsletter](https://github.com/kimihub/nemesis-api-newsletter)
 
@@ -125,7 +125,7 @@ Changelog
 ---------
 ### 0.6
 * Move the bootstrapper core/bootstrap.php to ./nemesis.php for more simplicity with Composer
-* Move core/errors.log to ./errors.log 
+* Move core/errors.log to ./errors.log
 * Add ./nemesis.dev.php to write logs in the errors file when included
 * Add NEMESIS_PROCESS_PATH to ./nemesis.php and core/class.App.php
 * Change behaviour of App system, an app can now be in the root server directory
@@ -133,7 +133,7 @@ Changelog
 * Deprecated class.Plugin.php
 * Define composer.json
 
-### 0.5 
+### 0.5
 * New function in functions.php : key_generator($length=8)
 * Removed hash/token generator and new secure ($_SESSION[$sessionName] = $expirationDate)
 * Add Cross-Origin Resource Sharing (CORS) headers in class.Api.php with Api::CORS()
@@ -145,7 +145,7 @@ Changelog
 ### 0.3
 * Simplification, re-organization of classes dependencies
 * init.php replaced with bootstrap.php, it is now clean and
-* new way to instance plugins and apps independently from Loader Class 
+* new way to instance plugins and apps independently from Loader Class
 * Routes configuration has now its own class with URL Class dependence
 * Loader class can initialize a class with a initClass method
 * errors.log changes its path to /core/errors.log
@@ -156,4 +156,3 @@ Changelog
 
 ### 0.1
 * Initial Release
- 
