@@ -3,6 +3,7 @@
 	Class Plugin
 	Description : Manage Plugins
 	Dependencies : Loader
+    DEPRECATED
 */
 
 class Plugin
@@ -11,6 +12,7 @@ class Plugin
 
 	public function __construct($name='init', $attributes=array())
 	{
+        error_log('Core.Plugin : Warning, this class is deprecated !');
 		$this->name = $name;
 		$this->path = NEMESIS_PATH.'plugins/'.$this->name.'/';
 		$this->setup($attributes);
