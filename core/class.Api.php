@@ -8,7 +8,6 @@
 class Api
 {
 	private static $instances = array();
-	private static CORS = 0;
 
 	public static function get($name)
 	{
@@ -37,10 +36,15 @@ class Api
 		$this->api->$method();
 	}
 	
-	public static function CORS()
+	public static function CORS($domains='*')
 	{
-		self::CORS = 1;
+		header('Access-Control-Allow-Origin: '.$domains);
 	}
+  
+    public static function RESTMethods($methods='GET, POST, PUT, PATCH, DELETE')
+    {
+        header('Access-Control-Allow-Methods: '.$methods);
+    }
 	
 	public static function getNextHash()
 	{
@@ -50,14 +54,7 @@ class Api
 	
 	public static function json($data)
 	{
-		if (self::$CORS)
-		{
-			header('Access-Control-Allow-Origin: *');
-			header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-			header('Access-Control-Allow-Headers: Authorization');
-		}
-		
-		header('content-type: application/json; charset=utf-8');
+		header('Content-Type: application/json; charset=utf-8');
 		echo json_encode($data);
 	}
 
