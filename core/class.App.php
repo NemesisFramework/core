@@ -8,34 +8,28 @@
 class App extends MVC
 {
 	private static $instances;
-	public $url;
 	public $NEMESIS = null;
+    public $url = ''; // deprecated
 	public $forbiddenMethods = array('setup', 'run', 'setAsDefault', 'startTime', 'endTime');
 
-	public function __construct($name='init', $version, $url)
+	public function __construct($name, $version)
 	{
-		$this->name = $name;
-		$this->version = $version;
-		$this->path = NEMESIS_PATH.'apps/'.$this->name.'/';
-		$this->resources_url = NEMESIS_URL.'apps/'.$this->name.'/resources/';
-		$this->url = strtolower((($url)? $url:$this->name));
-		URL::$prefix = trim($this->url, '/').'/';
+        $this->name = $name;
+        $this->version = $version;
+		$this->path = NEMESIS_PROCESS_PATH;
+        $this->resources_path = NEMESIS_PATH . 'resources/';
+		$this->resources_url = NEMESIS_URL . 'resources/';
 		$this->NEMESIS = Loader::getInstance();
-		
-		if ($name == 'init')
-		{
-			$path = NEMEMSIS_PATH.'apps';
-			if (!file_exists($path))
-				error_log('Core.App : apps directory does not exist');
-		}
-	}
-
-	public function setAsDefault()
+    }
+    
+    /* DEPRECATED
+    public function setAsDefault()
 	{
 		$this->url = '';
 		URL::$prefix = '';
 	}
-
+    */
+  
 	public function startTime()
 	{
 		$time = microtime();
@@ -66,10 +60,10 @@ class App extends MVC
 
 		Hook::get('App', 'FILENAME')->apply($this);
 
-		if (is_file(NEMESIS_PATH.URL::$request['SOURCE']) && file_exists(NEMESIS_PATH.URL::$request['SOURCE']))
+		if (is_file($this->resources_path.URL::$request['SOURCE']) && file_exists($this->resources_path.URL::$request['SOURCE']))
 		{
-			header('Content-type: '.mime_content_type(NEMESIS_PATH.URL::$request['SOURCE']));
-			echo file_get_contents(NEMESIS_PATH.URL::$request['SOURCE']);
+			header('Content-type: '.mime_content_type($this->resources_path.URL::$request['SOURCE']));
+			echo file_get_contents($this->resources_path.URL::$request['SOURCE']);
 			exit();
 		}
 
@@ -159,17 +153,18 @@ class App extends MVC
 		return $new_menu_items;
 	}
 	
-	public static function getInstance($name, $version='1', $url='')
+	public static function getInstance($name, $version='1')
 	{
 		if (!isset(self::$instances[$name]))
 		{
-			if (file_exists($config=NEMESIS_PATH.'apps/'.$name.'/config.php'))
+			if (file_exists($config=$this->path.'config.php'))
 				require_once($config);
 
-			if (file_exists($functions=NEMESIS_PATH.'apps/'.$name.'/functions.php'))
-				require_once($functions);
+			/* DEPRECATED
+            if (file_exists($functions=$this->path.'/functions.php'))
+				require_once($functions);*/
 
-			if (!file_exists($file=NEMESIS_PATH.'apps/'.$name.'/app.php'))
+			if (!file_exists($file=$this->path.'app.php'))
 			{
 				echo $file.' is missing. Cannot run application called '.$name.'';
 				die;
@@ -177,7 +172,7 @@ class App extends MVC
 
 			require_once($file);
 
-			self::$instances[$name] = new $name($name, $version, $url);
+			self::$instances[$name] = new $name($name, $version);
 		}
 		return self::$instances[$name];
 	}
