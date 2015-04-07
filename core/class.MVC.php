@@ -7,7 +7,7 @@
 
 class MVC
 {	
-	protected $name, $version, $resources_url;
+	protected $name, $version;
 	protected $buffer = '';
 	protected $variables = array();
 	protected $collections = array();
@@ -20,7 +20,7 @@ class MVC
 	
 	public function getController ($controller)
 	{
-		if (!file_exists($file=$this->path.'controllers/'.$controller.'.php'))
+		if (!file_exists($file=NEMESIS_PROCESS_PATH.'controllers/'.$controller.'.php'))
 		{
 			return false;
 		}
@@ -30,7 +30,7 @@ class MVC
 	
 	public function getModel ($model)
 	{
-		if (!file_exists($file=$this->path.'models/'.$model.'.php'))
+		if (!file_exists($file=NEMESIS_PROCESS_PATH.'models/'.$model.'.php'))
 		{
 			error_log('Core.MVC : Model '.$file.' does not exist');
 			return false;
@@ -44,19 +44,19 @@ class MVC
 		if ($resource && preg_match('#http\:\/\/#', $resource))
 			return $resource;
 			
-		if (!file_exists($file=$this->path.'resources/'.$resource))
+		if (!file_exists($file=NEMESIS_PROCESS_PATH.'resources/'.$resource))
 		{
 			error_log('Core.MVC : Resource '.$file.' does not exist');
 			return false;
 		}
 		
-		return $this->resources_url.$resource;
+		return NEMESIS_URL.$resource;
 	}
 	
 	public function getView ($view)
 	{
 		
-		if (!file_exists($file=$this->path.'views/'.$view.'.php'))
+		if (!file_exists($file=NEMESIS_PROCESS_PATH.'views/'.$view.'.php'))
 		{
 			error_log('Core.MVC : View '.$file.' does not exist');
 			return false;
@@ -196,7 +196,7 @@ class MVC
 	private function printCSS ($view='')
 	{
 	
-		$this->CSS = Hook::get('MVC', 'CSS')->call($this->CSS, $this->path.'resources/');
+		$this->CSS = Hook::get('MVC', 'CSS')->call($this->CSS, NEMESIS_PROCESS_PATH.'resources/', $this->version);
 
 		if (!empty($this->CSS))
 		{
@@ -251,7 +251,7 @@ class MVC
 	private function printJS ()
 	{
 		
-		$this->JS = Hook::get('MVC', 'JS')->call($this->JS, $this->path.'resources/');
+		$this->JS = Hook::get('MVC', 'JS')->call($this->JS, NEMESIS_PROCESS_PATH.'resources/', $this->version);
 		
 		if (!empty($this->JS))
 		{
