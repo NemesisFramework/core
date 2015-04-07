@@ -16,9 +16,6 @@ class App extends MVC
 	{
         $this->name = $name;
         $this->version = $version;
-		$this->path = NEMESIS_PROCESS_PATH;
-        $this->resources_path = NEMESIS_PATH . 'resources/';
-		$this->resources_url = NEMESIS_URL . 'resources/';
 		$this->NEMESIS = Loader::getInstance();
     }
     
@@ -60,10 +57,10 @@ class App extends MVC
 
 		Hook::get('App', 'FILENAME')->apply($this);
 
-		if (is_file($this->resources_path.URL::$request['SOURCE']) && file_exists($this->resources_path.URL::$request['SOURCE']))
+		if (is_file($this->path.'resources/'.URL::$request['SOURCE']) && file_exists($this->path.'resources/'.URL::$request['SOURCE']))
 		{
-			header('Content-type: '.mime_content_type($this->resources_path.URL::$request['SOURCE']));
-			echo file_get_contents($this->resources_path.URL::$request['SOURCE']);
+			header('Content-type: '.mime_content_type($this->path.'resources/'.URL::$request['SOURCE']));
+			echo file_get_contents($this->path.'resources/'.URL::$request['SOURCE']);
 			exit();
 		}
 
