@@ -1,6 +1,6 @@
 # Nemesis Framework  #
 Nemesis is a small PHP Framework that I've started to sustain when I realized I needed a
-**lightweight**, **native**, **minimalistic** and **flexible** tool to quickly develop web app for testing and specific requests which require to work on a basic shared web hosting with few hardware resources.
+**lightweight**, **native**, **minimalistic** and **flexible** tool to quickly develop MVC web app or REST api for testing and specific requests which require to work on a basic shared web hosting with few hardware resources.
 
 ## Features ##
 
@@ -30,6 +30,10 @@ The core is customizable according to the components needed and their dependenci
 **MVC** : add all components to build a MVC app like a view builder, depends to Loader, Hook, URL, Routes
 
 **App** : manage a web app built on a MVC pattern with a class controller, depends to Loader, Hook, URL, Routes, MVC
+
+**HTMLhelpers** : helpers to build html forms, no dependencies
+
+**CSSmin** : minify CSS, depends to Loader, Hook, MVC
 
 
 
@@ -109,7 +113,7 @@ Router initialization
 
 Example of a web app initialization
 
-	$blogApp = App::getInstance('blog');
+	$blogApp = App::getInstance('blog', '1.0'); // the version is not required
 	$blogApp->run();
 	echo $blogApp;
 
@@ -123,15 +127,21 @@ For more examples, check the others repositories prefixed with "nemesis-"
 
 Changelog
 ---------
+### 0.7
+* Add Api::RESTMethods()
+* Implements HTMLhelpers old plugin to class.HTMLhelpers.php core
+* Implements CSSmin old plugin to class.CSSmin.php core
+* Cleans App and MVC to implement NEMESIS_PROCESS_PATH
+
 ### 0.6
-* Move the bootstrapper core/bootstrap.php to ./nemesis.php for more simplicity with Composer
+* Move the bootstraper core/bootstrap.php to ./nemesis.php for more simplicity with Composer
 * Move core/errors.log to ./errors.log
 * Add ./nemesis.dev.php to write logs in the errors file when included
 * Add NEMESIS_PROCESS_PATH to ./nemesis.php and core/class.App.php
 * Change behaviour of App system, an app can now be in the root server directory
 * Deprecated App::setAsDefault() and App::$url
 * Deprecated class.Plugin.php
-* Define composer.json
+* Defines composer.json
 
 ### 0.5
 * New function in functions.php : key_generator($length=8)
