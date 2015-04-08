@@ -16,8 +16,8 @@ class Router
 		else
 			$request = $_SERVER['REQUEST_URI'];
 
-		if (NEMESIS_ROOT && NEMESIS_ROOT != '/')
-			$request = str_replace (NEMESIS_ROOT, '', $request);
+		if (NEMESIS_PROCESS_ROOT && NEMESIS_PROCESS_ROOT != '/')
+			$request = str_replace (NEMESIS_PROCESS_ROOT, '', $request);
 
 		// if (!empty($request) && (substr($request, -1) != '/') && !extension($request))
 			// URL::redirect($request, 1);
