@@ -19,9 +19,6 @@
   "autoload": {
     "files": ["nemesis.php"]
   },
-  "autoload-dev": {
-    "files": ["nemesis.dev.php"]
-  },
   "homepage": "https://github.com/kimihub/nemesis-framework",
   "license": "GPL-3.0",
   "minimum-stability": "stable"
