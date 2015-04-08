@@ -95,7 +95,7 @@ Require bootstraper
 
 To log php errors
 
-    require_once 'nemesis.dev.php'; // to view errors.log : http://mydomain.com/errors.log 
+    get_errors(); // to view errors.log : http://mydomain.com/errors.log 
 
 
 If the core functions are required
