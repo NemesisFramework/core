@@ -47,11 +47,11 @@ function get_errors()
   error_reporting(E_ALL);
   ini_set('log_errors', true);
   ini_set('ignore_repeated_errors', true);
-  ini_set('error_log', NEMESIS_PATH.'errors.log');
+  ini_set('error_log', NEMESIS_PROCESS_PATH.'errors.log');
 
   if (strpos($_SERVER['REQUEST_URI'], 'errors.log'))
   {
-    echo @file_get_content(NEMESIS_PATH.'errors.log');
+    echo @file_get_content(NEMESIS_PROCESS_PATH.'errors.log');
     exit();
   }
 }
