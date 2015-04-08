@@ -30,12 +30,19 @@ function core_autoloader()
 	require_once NEMESIS_PATH . 'core/class.Loader.php';
 }
 
+// Display errors
+function display_errors()
+{
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+}
+
 // Get errors
 function get_errors()
 {
 	
-  if (!file_exists(NEMESIS_PATH.'errors.log'))
-    touch(NEMESIS_PATH.'errors.log');
+  if (!file_exists(NEMESIS_PROCESS_PATH.'errors.log'))
+    touch(NEMESIS_PROCESS_PATH.'errors.log');
 
   error_reporting(E_ALL);
   ini_set('log_errors', true);

@@ -95,8 +95,11 @@ Require bootstraper
 
 To log php errors
 
-    get_errors(); // to view errors.log : http://mydomain.com/errors.log 
-
+    get_errors(); // to view errors.log : http://mydomain.com/errors.log
+  
+To display php errors
+    
+    display_errors();
 
 If the core functions are required
 
