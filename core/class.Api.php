@@ -41,10 +41,10 @@ class Api
 		header('Access-Control-Allow-Origin: '.$domains);
 	}
   
-    public static function RESTMethods($methods='GET, POST, PUT, PATCH, DELETE')
-    {
-        header('Access-Control-Allow-Methods: '.$methods);
-    }
+	public static function RESTMethods($methods='GET, POST, PUT, PATCH, DELETE')
+	{
+		header('Access-Control-Allow-Methods: '.$methods);
+	}
 	
 	public static function getNextHash()
 	{
