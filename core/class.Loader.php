@@ -26,7 +26,7 @@ class Loader
 			function ($className)
 			{
 				
-				if (file_exists($classFile=CORE.'class.'. $className . '.php'))
+				if (file_exists($classFile=NEMESIS_PATH.'core/class.'. $className . '.php'))
 				{
 					require_once($classFile);
 				}
