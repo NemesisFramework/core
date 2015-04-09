@@ -166,9 +166,10 @@ class App extends MVC
 				echo $file.' is missing. Cannot run application called '.$name.'';
 				die;
 			}
-			*/
+			
 			require_once($file);
-
+			*/
+			
 			self::$instances[$name] = new $name($name, $version);
 		}
 		return self::$instances[$name];
