@@ -5,7 +5,7 @@
 
 // CORE PATH
 define('NEMESIS_PATH', str_replace('\\', '/', str_replace('//', '/', (__DIR__) . '/')));
-define('NEMESIS_PROCESS_PATH', str_replace('//', '/', dirname(realpath($_SERVER['SCRIPT_FILENAME']) . '/')));
+define('NEMESIS_PROCESS_PATH', str_replace('//', '/', dirname(realpath($_SERVER['SCRIPT_FILENAME'])). '/'));
 define('NEMESIS_PROCESS_ROOT', str_replace('//', '/', dirname($_SERVER['SCRIPT_NAME']) . '/'));
 
 // BASE URL
