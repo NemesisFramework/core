@@ -159,14 +159,14 @@ class App extends MVC
 
 			/* DEPRECATED
             if (file_exists($functions=$this->path.'/functions.php'))
-				require_once($functions);*/
+				require_once($functions);
 
 			if (!file_exists($file=$this->path.'app.php'))
 			{
 				echo $file.' is missing. Cannot run application called '.$name.'';
 				die;
 			}
-
+			*/
 			require_once($file);
 
 			self::$instances[$name] = new $name($name, $version);
