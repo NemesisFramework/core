@@ -25,9 +25,7 @@ class Session
 	{
 		if (!isset($_SESSION[$name]))
 			return false;
-
-		$hash = $this->token();
-
+		
 		if ($_SESSION[$name] < time())
 		{
 			unset($_SESSION[$name]);
