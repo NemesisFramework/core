@@ -154,7 +154,7 @@ class App extends MVC
 	{
 		if (!isset(self::$instances[$name]))
 		{
-			if (file_exists($config=$this->path.'config.php'))
+			if (file_exists($config=NEMESIS_PROCESS_PATH.'config.php'))
 				require_once($config);
 
 			/* DEPRECATED
