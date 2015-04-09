@@ -214,10 +214,12 @@ if (!function_exists('download')) {
 			return $filePath;
 		
 		$fileInfos = pathinfo($filePath);
+		$finfo = new finfo(FILEINFO_MIME);
+		$type = $finfo->file($filePath);
 		
 		header('Content-disposition: attachment; filename='. (($fileName)? $fileName:$fileInfos['basename'].'.'.$fileInfos['extension']));
 		header('Content-Type: application/force-download');
-		header('Content-Transfer-Encoding: '. mime_content_type($fileInfos['extension']) .'\n');
+		header('Content-Transfer-Encoding: '. $type .'\n');
 		header('Content-Length: '.filesize($filePath));
 		header('Pragma: no-cache');
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0, public');

@@ -59,7 +59,10 @@ class App extends MVC
 
 		if (is_file($this->path.'resources/'.URL::$request['SOURCE']) && file_exists($this->path.'resources/'.URL::$request['SOURCE']))
 		{
-			header('Content-type: '.mime_content_type($this->path.'resources/'.URL::$request['SOURCE']));
+			$finfo = new finfo(FILEINFO_MIME);
+			$type = $finfo->file($this->path.'resources/'.URL::$request['SOURCE']);
+			
+			header('Content-type: '.$type);
 			echo file_get_contents($this->path.'resources/'.URL::$request['SOURCE']);
 			exit();
 		}
