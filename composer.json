@@ -1,9 +1,9 @@
 {
   "name": "kimihub/nemesis-framework",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Small PHP5 Framework",
   "type": "library",
-  "keywords": ["framework","routing", "app", "api", "rest", "mvc"],
+  "keywords": ["framework", "mvc", "rest"],
   "authors": [
     {
       "name": "Kim I. Castelli",
