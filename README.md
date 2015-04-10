@@ -96,9 +96,9 @@ Require bootstraper
 To log php errors
 
     get_errors(); // to view errors.log : http://mydomain.com/errors.log
-  
+
 To display php errors
-    
+
     display_errors();
 
 If the core functions are required
@@ -123,9 +123,9 @@ Example of a web app initialization
 ### More examples ###
 For more examples, check the others repositories prefixed with "nemesis-"
 
-- nemesis-api-newsletter : [https://github.com/kimihub/nemesis-api-newsletter](https://github.com/kimihub/nemesis-api-newsletter)
+- REST Newsletter Api : [https://github.com/kimihub/nemesis-api-example](https://github.com/kimihub/nemesis-api-example)
 
-- nemesis-app-blog : [https://github.com/kimihub/nemesis-app-blog](https://github.com/kimihub/nemesis-app-blog)
+- MVC Blog App : [https://github.com/kimihub/nemesis-app-example](https://github.com/kimihub/nemesis-app-example)
 
 
 Changelog
