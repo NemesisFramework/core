@@ -150,8 +150,8 @@ if (!function_exists('upload')) {
 	// return an array of upload result for each file or an integer of the targetPath's permissions if not 0777
 	function upload ($name, $targetPath, $extensions=array()) {
 	
-		if (($perms=getperms($targetPath)) != '0777')
-			return $perms;
+		/*if (($perms=getperms($targetPath)) != '0777')
+			return $perms;*/
 	
 		$result = array();
 	
