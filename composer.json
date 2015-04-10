@@ -1,6 +1,6 @@
 {
   "name": "kimihub/nemesis-framework",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "Small PHP5 Framework",
   "type": "library",
   "keywords": ["framework", "mvc", "rest"],
